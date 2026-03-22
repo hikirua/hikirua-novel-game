@@ -282,7 +282,7 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.55)),
-                  url("assets/bg/title_main.jpg");
+                  url("assets/bg/title_main.png");
       background-size: 110%;
       background-position: center;
       z-index: 100;
@@ -465,11 +465,12 @@
       se: {
         click: "assets/audio/se/click.mp3",
         keyboard: "assets/audio/se/keyboard.mp3",
-        start: "assets/audio/se/start.mp3"
+        start: "assets/audio/se/start.mp3",
+        iphone: "assets/audio/se/iphone.mp3"
       },
       ui: {
         titleLogo: "assets/ui/title_logo.png",
-        titleBg: "assets/bg/title_main.jpg"
+        titleBg: "assets/bg/title_main.png"
       }
     };
 
@@ -482,6 +483,9 @@
       },
       narrator: {
         name: ""
+      },
+      haha: {
+        name: "母"
       }
     };
 
@@ -531,12 +535,15 @@
         type: "fade",
         opacity: 1
       },
-
+      {
+        se: "keyboard",
+        type: "wait",
+        duration: 4500,
+      },
       {
         type: "dialogue",
         speaker: "hiki",
-        text: "......",
-        se: "keyboard"
+        text: ".........",
       },
       {
         type: "fadeClear",
@@ -571,10 +578,34 @@
         speaker: "hiki",
         text: ".......",
       },
-    　{
+      {
         type: "dialogue",
         speaker: "hiki",
         text: ".................",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: ".......................",
+        se: "iphone",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "........................................",
+        se: "iphone",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "あ、グレネードケース出来てんじゃん",
+        se: "iphone",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "最安値は....3200€か",
+        se: "iphone",
       },
     ];
 
@@ -989,6 +1020,8 @@
         }
 
         case "wait": {
+          if (eventData.se) playSe(eventData.se);
+
           hideDialogueUI();
 
           setTimeout(() => {
