@@ -460,13 +460,14 @@
     const ASSETS = {
       bgm: {
         opening: "assets/audio/bgm/opening.mp3",
-        game1: "assets/audio/bgm/tarkov003.mp3",
+        game001: "assets/audio/bgm/tarkov003.mp3",
+        iphoneBGM001: "assets/audio/bgm/iphone001.mp3",
       },
       se: {
         click: "assets/audio/se/click.mp3",
         keyboard: "assets/audio/se/keyboard.mp3",
         start: "assets/audio/se/start.mp3",
-        iphone: "assets/audio/se/iphone.mp3"
+        iphoneSE001: "assets/audio/se/iphoneSE001.mp3"
       },
       ui: {
         titleLogo: "assets/ui/title_logo.png",
@@ -525,11 +526,13 @@
         type: "dialogue",
         speaker: "hiki",
         text: "今、何時だ？",
+        voice: "assets/audio/voice/hiki/hiki002.mp3",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "もう44時半じゃねーかっ\n間に合うか？",
+        voice: "assets/audio/voice/hiki/hiki003.mp3",
       },
       {
         type: "fade",
@@ -551,27 +554,31 @@
       {
         type: "scene",
         background: "assets/bg/game001.png",
-        bgm: "game1",
+        bgm: "game001",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "最悪だ...ビットコイン売り切れてる",
+        voice: "assets/audio/voice/hiki/hiki004.mp3",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "次の更新は――――",
+        voice: "assets/audio/voice/hiki/hiki005.mp3",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "2時間半後かよ",
+        voice: "assets/audio/voice/hiki/hiki006.mp3",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "更新までスタッシュ整理でもするかぁ",
+        voice: "assets/audio/voice/hiki/hiki007.mp3",
       },
       {
         type: "dialogue",
@@ -587,25 +594,58 @@
         type: "dialogue",
         speaker: "hiki",
         text: ".......................",
-        se: "iphone",
+        se: "iphoneSE001",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "........................................",
-        se: "iphone",
+        se: "iphoneSE001",
       },
       {
         type: "dialogue",
         speaker: "hiki",
         text: "あ、グレネードケース出来てんじゃん",
-        se: "iphone",
+        voice: "assets/audio/voice/hiki/hiki008.mp3",
+        se: "iphoneSE001",
       },
       {
         type: "dialogue",
         speaker: "hiki",
-        text: "最安値は....3200€か",
-        se: "iphone",
+        text: "最安値は....3200€ね",
+        voice: "assets/audio/voice/hiki/hiki009.mp3",
+        se: "iphoneSE001",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "380000₽で出品しとくか",
+        voice: "assets/audio/voice/hiki/hiki010.mp3",
+        bgm: "iphoneSE001",
+      },
+      {
+        type: "wait",
+        duration: 3000,
+        bgm: "iphoneBGM001",
+      },
+      {
+        type: "scene",
+        background: "assets/bg/desk.png",
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "もうっ！さっきからなんだよ、うるせーな",
+        voice: "assets/audio/voice/hiki/hiki011.mp3",
+      },
+      {
+        type: "stopBgm",      
+      },
+      {
+        type: "dialogue",
+        speaker: "hiki",
+        text: "はい？もしもし？",
+        voice: "assets/audio/voice/hiki/hiki012.mp3",
       },
     ];
 
@@ -1021,6 +1061,7 @@
 
         case "wait": {
           if (eventData.se) playSe(eventData.se);
+          if (eventData.bgm) playBgm(eventData.bgm);
 
           hideDialogueUI();
 
